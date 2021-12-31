@@ -1,0 +1,47 @@
+doctype html
+head
+  include ./components/head.pug
+  title Официальный сайт 163 школы Санкт-Петербурга
+
+
+
+include ./components/navbar.pug
+.subnavbar
+  header(style='padding-top: 2vh!important; padding-bottom: 2vh!important;' class='d-flex py-3')
+    ul.nav.nav-pills(style='font-weight: bold; font-size: 0.9vw; margin-left: 1vw;')
+      li.nav-item
+        a.sub-nav-link-edit.nav-link.active(href='/persons/administration' aria-current='page') Администрация
+      li.nav-item
+        a.sub-nav-link-edit.nav-link(href='/persons/teature123') Учителя
+      li.nav-item
+        a.sub-nav-link-edit.nav-link(href='#') Педагоги ОДОД
+      li.nav-item
+        a.sub-nav-link-edit.nav-link(href='#') Социальный педагог
+      li.nav-item
+        a.sub-nav-link-edit.nav-link(href='#') Психолог
+      li.nav-item
+        a.sub-nav-link-edit.nav-link(href='') Логопед
+
+
+
+.place1.position-title(style='width: 22vw; height: 9vh;')
+  | Директор школы
+
+
+
+each person in persons
+  if person.position == 'director'
+    .place1(style='margin: 6vh 12vw 0vh 12vw; display: flex; justify-content: center; padding: 2vh 2vw 2vh 2vw')
+      div(style='display: inline-block; border-right: 0.1vw solid lightgrey; padding-right: 1.5vw;')
+        div(style='border-radius: 25px; border: 2px solid blue; padding: 0.9vw;')
+          img(src=person.img style='width: 12vw; border-radius: 15px;')
+      div(style='display: inline-block; padding-left: 1.5vw;')
+        div(style='font-size: 1.5vw; padding-bottom: 0vh;')
+          a.persons-name-a(href='/persons/page' + person._id)
+            p !{person.name}
+        div(style='font-size: 1.2vw;')
+          p !{person.short_description}
+
+
+
+include ./components/footer.pug

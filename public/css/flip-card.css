@@ -1,0 +1,13 @@
+.card {
+  width: 130px;
+  height: 25px;
+  color: black;
+  border: 1px solid white;
+  align-content: center;
+  opacity: 0;
+  margin-right: 15px;
+}
+
+.card.is-flipped {
+  opacity: 1;
+}
