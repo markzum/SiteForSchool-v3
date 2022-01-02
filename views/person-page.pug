@@ -12,7 +12,7 @@ include ./components/navbar.pug
       li.nav-item
         a.sub-nav-link-edit.nav-link(href='/persons/administration') Администрация
       li.nav-item
-        a.sub-nav-link-edit.nav-link(href='/persons/teature123') Учителя
+        a.sub-nav-link-edit.nav-link(href='/persons/teachers') Учителя
       li.nav-item
         a.sub-nav-link-edit.nav-link(href='#') Педагоги ОДОД
       li.nav-item
@@ -24,11 +24,36 @@ include ./components/navbar.pug
 
 
 
-.place1(style='margin: 6vh 12vw 0vh 12vw; display: flex; justify-content: center; padding: 2vh 2vw 2vh 2vw')
+if person.position == 'director'
+    - var position_img_src=host+'/static/img/director_img.png'
+if person.position == 'ass_director'
+    - var position_img_src=host+'/static/img/ass_director_img.png'
+if person.position == 'manager'
+    - var position_img_src=host+'/static/img/manager_img.png'
+if person.position == 'primary'
+    - var position_img_src=host+'/static/img/primary_img.png'
+if person.position == 'rus_and_liter'
+    - var position_img_src=host+'/static/img/rus_and_liter_img.png'
+if person.position == 'math'
+    - var position_img_src=host+'/static/img/math_img.png'
+if person.position == 'physics'
+    - var position_img_src=host+'/static/img/physics_img.png'
+if person.position == 'obzh'
+    - var position_img_src=host+'/static/img/obzh_img.png'
+if person.position == 'it'
+    - var position_img_src=host+'/static/img/it_img.png'
+
+
+
+
+.place1(style='margin: 6vh 12vw 0vh 12vw; display: flex; padding: 2vh 2vw 2vh 2vw')
   div(style='display: inline-block; padding-right: 1.5vw;')
     div(style='border-radius: 25px; border: 2px solid blue; padding: 0.9vw;')
-      img(src=person.img style='width: 12vw; border-radius: 15px;')
-    img(src=host+'/static/img/school.png' style='width: 10vw; margin-top: 4vh; margin-left: 2.05vw;')
+      if person.img == 'no'
+        img(src=host+'/static/img/person-photo.png' style='width: 12vw; border-radius: 15px;')
+      else
+        img(src=src=person.img style='width: 12vw; border-radius: 15px;')
+    img(src=position_img_src style='width: 10vw; margin-top: 4vh; margin-left: 2.05vw;')
   div(style='display: inline-block; padding-left: 1.5vw;')
     div(style='font-size: 2.2vw; padding-bottom: 0vh;')
       p !{person.name}

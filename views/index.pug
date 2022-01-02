@@ -24,6 +24,7 @@ head
   include ./components/head.pug
   title Официальный сайт 163 школы Санкт-Петербурга
 
+
 include ./components/navbar.pug
 
 
@@ -31,6 +32,7 @@ include ./components/navbar.pug
 each alert in alerts
   .alert.aos(data-aos='flip-up' data-aos-once='true' data-aos-duration='1000')
     p(style="font-size: 1.6vw;") !{alert.alert}
+
 
 
 .place1(style='margin: 8vh 8vw 0px 8vw; padding-top: 1vh; padding-bottom: 1vh;')
@@ -66,7 +68,7 @@ each alert in alerts
         +menuCard(host+'/static/img/persons.png', 
           'Персоналии', 
           ['Администрация', 'Учителя', 'Педагоги ОДОД', 'Социальный педагог', 'Психолог', 'Логопед'], 
-          ['/persons', '/persons', '/persons', '/persons', '/persons' ,'/persons'],
+          ['/persons/administration', '/persons/teachers', '/persons', '/persons', '/persons' ,'/persons'],
           'fade-left')
 
     tr

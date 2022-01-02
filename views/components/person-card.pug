@@ -1,0 +1,17 @@
+mixin person-card(position_need)
+  each person in persons
+    if person.position == position_need
+      .place1(style='margin: 6vh 12vw 0vh 12vw; display: flex; padding: 2vh 2vw 2vh 2vw')
+        div(style='display: inline-block; border-right: 0.1vw solid lightgrey; padding-right: 1.5vw;')
+          div(style='border-radius: 25px; border: 2px solid blue; padding: 0.9vw;')
+            a(href='/persons/page' + person._id)
+              if person.img == 'no'
+                img(src=host+'/static/img/person-photo.png' style='width: 12vw; border-radius: 15px;')
+              else
+                img(src=person.img style='width: 12vw; border-radius: 15px;')
+        div(style='display: inline-block; padding-left: 1.5vw;')
+          div(style='font-size: 1.5vw; padding-bottom: 0vh;')
+            a.persons-name-a(href='/persons/page' + person._id)
+              p !{person.name}
+          div(style='font-size: 1.2vw;')
+            p !{person.short_description}

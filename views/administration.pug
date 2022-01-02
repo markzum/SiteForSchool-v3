@@ -1,3 +1,7 @@
+include ./components/person-card.pug
+
+
+
 doctype html
 head
   include ./components/head.pug
@@ -12,7 +16,7 @@ include ./components/navbar.pug
       li.nav-item
         a.sub-nav-link-edit.nav-link.active(href='/persons/administration' aria-current='page') Администрация
       li.nav-item
-        a.sub-nav-link-edit.nav-link(href='/persons/teature123') Учителя
+        a.sub-nav-link-edit.nav-link(href='/persons/teachers') Учителя
       li.nav-item
         a.sub-nav-link-edit.nav-link(href='#') Педагоги ОДОД
       li.nav-item
@@ -27,20 +31,21 @@ include ./components/navbar.pug
 .place1.position-title(style='width: 22vw; height: 9vh;')
   | Директор школы
 
++person-card('director')
 
 
-each person in persons
-  if person.position == 'director'
-    .place1(style='margin: 6vh 12vw 0vh 12vw; display: flex; justify-content: center; padding: 2vh 2vw 2vh 2vw')
-      div(style='display: inline-block; border-right: 0.1vw solid lightgrey; padding-right: 1.5vw;')
-        div(style='border-radius: 25px; border: 2px solid blue; padding: 0.9vw;')
-          img(src=person.img style='width: 12vw; border-radius: 15px;')
-      div(style='display: inline-block; padding-left: 1.5vw;')
-        div(style='font-size: 1.5vw; padding-bottom: 0vh;')
-          a.persons-name-a(href='/persons/page' + person._id)
-            p !{person.name}
-        div(style='font-size: 1.2vw;')
-          p !{person.short_description}
+
+.place1.position-title(style='width: 28vw; height: 9vh;')
+  | Заместители директора
+
++person-card('ass_director')
+
+
+
+.place1.position-title(style='width: 50vw; height: 9vh;')
+  | Руководители структурных подразделений
+
++person-card('manager')
 
 
 

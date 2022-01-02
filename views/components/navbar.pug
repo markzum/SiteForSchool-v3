@@ -1,43 +1,47 @@
 div(style='background: white; top: 0; height: auto; width: 98.85vw; z-index: 2;')
-  header(style='padding-top: 2vh!important; padding-bottom: 2vh!important;' class='d-flex py-3')
+  header(style='padding-top: 2vh!important; padding-bottom: 1.1vh!important;' class='d-flex py-3')
     a(href='/' style='margin-left: 1vw; margin-right: 1.5vw; margin-top: -1.1vh;')
       img(style="width: 7vw;" align='center' src=host+'/static/img/Logo2.png')
     ul.nav.nav-pills(style='font-weight: bold; font-size: 1.08vw;')
       li.nav-item
         if sectionTitle == 'index'
-          a.nav-link.active(href='/' aria-current='page') Главная
+          a.nav-link-edit.nav-link.active(href='/' aria-current='page') Главная
         else
-          a.nav-link(href='/') Главная
+          a.nav-link-edit.nav-link(href='/') Главная
 
       li.nav-item
         if sectionTitle == 'about'
-          a.nav-link.active(href='about' aria-current='page') О школе
+          a.nav-link-edit.nav-link.active(href='about' aria-current='page') О школе
         else
-          a.nav-link(href='about') О школе
+          a.nav-link-edit.nav-link(href='about') О школе
 
       li.nav-item
-        a.nav-link(href='#') Новости
+        a.nav-link-edit.nav-link(href='#') Новости
 
       li.nav-item
-        a.nav-link(href='#') Учеба
+        a.nav-link-edit.nav-link(href='#') Учеба
 
       li.nav-item
-        a.nav-link(href='#') Жизнь
+        a.nav-link-edit.nav-link(href='#') Жизнь
 
       li.nav-item
         if sectionTitle == 'persons'
-          a.nav-link.active(href='/persons/administration' aria-current='page') Персоналии
+          a.nav-link-edit.nav-link.active(href='/persons/administration' aria-current='page') Персоналии
         else
-          a.nav-link(href='/persons/administration') Персоналии
+          a.nav-link-edit.nav-link(href='/persons/administration') Персоналии
 
       li.nav-item
-        a.nav-link(href='#') История
+        a.nav-link-edit.nav-link(href='#') История
 
       li.nav-item
-        a.nav-link(href='#') Учителям
+        a.nav-link-edit.nav-link(href='#') Учителям
 
       li.nav-item
-        a.nav-link(href='#') Сведения об ОО
+        a.nav-link-edit.nav-link(href='#') Сведения об ОО
+    
+
+    div(style='display: flex; justify-content: center;')
+      
 
 
 

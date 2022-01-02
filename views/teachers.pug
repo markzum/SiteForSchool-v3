@@ -1,0 +1,80 @@
+include ./components/person-card.pug
+
+
+
+doctype html
+head
+  include ./components/head.pug
+  title Официальный сайт 163 школы Санкт-Петербурга
+
+
+
+include ./components/navbar.pug
+.subnavbar
+  header(style='padding-top: 2vh!important; padding-bottom: 2vh!important;' class='d-flex py-3')
+    ul.nav.nav-pills(style='font-weight: bold; font-size: 0.9vw; margin-left: 1vw;')
+      li.nav-item
+        a.sub-nav-link-edit.nav-link(href='/persons/administration') Администрация
+      li.nav-item
+        a.sub-nav-link-edit.nav-link.active(href='/persons/teachers' aria-current='page') Учителя
+      li.nav-item
+        a.sub-nav-link-edit.nav-link(href='#') Педагоги ОДОД
+      li.nav-item
+        a.sub-nav-link-edit.nav-link(href='#') Социальный педагог
+      li.nav-item
+        a.sub-nav-link-edit.nav-link(href='#') Психолог
+      li.nav-item
+        a.sub-nav-link-edit.nav-link(href='') Логопед
+
+
+
+.place1.position-title(style='width: 23vw; height: 9vh;')
+  | Начальная школа
+
++person-card('primary')
+
+
+
+.place1.position-title(style='width: 33vw; height: 9vh;')
+  | Русский язык и литература
+
++person-card('rus_and_liter')
+
+
+
+.place1.position-title(style='width: 18vw; height: 9vh;')
+  | Математика
+
++person-card('math')
+
+
+
+.place1.position-title(style='width: 12vw; height: 9vh;')
+  | Физика
+
++person-card('physics')
+
+
+
+.place1.position-title(style='width: 12vw; height: 9vh;')
+  | Химия
+
++person-card('chemistry')
+
+
+
+.place1.position-title(style='width: 10vw; height: 9vh;')
+  | ОБЖ
+
++person-card('obzh')
+
+
+
+.place1.position-title(style='width: 25vw; height: 9vh;')
+  | Информатика и ИКТ
+
++person-card('it')
+
+
+
+include ./components/footer.pug
