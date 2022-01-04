@@ -1,0 +1,56 @@
+doctype html
+head
+  include ./components/head.pug
+  title Официальный сайт 163 школы Санкт-Петербурга
+
+
+
+include ./components/navbar.pug
+
+
+
+.place1(style='margin: 6vh 12vw 0vh 12vw; padding: 4vh 2vw 2vh 2vw; min-height: 100vh;')
+  form(action="/search")
+    
+    input.search-input(type="text" name="q" placeholder="Поиск" autocomplete="off" value= q autofocus)
+    //button.search-button(type="submit") Поиск
+    input.search-button(type="image" src=host+'/static/img/search.png')
+
+  div(style='border-bottom: 0.15vw solid lightgray; padding-bottom: 1.5vw; margin-bottom: 1.5vw; width: 60vw; margin-left: 5vw;')
+
+  if q
+    unless searchList == 'no'
+      each item in searchList[0]
+        a(href=item.href)
+          .search-item
+            if item.class == 'word_file'
+              div !{fa_word_file+" "+item.name}
+            else if item.class == 'powerpoint_file'
+              div !{fa_powerpoint_file+" "+item.name}
+            else if item.class == 'pdf_file'
+              div !{fa_pdf_file+" "+item.name}
+            else if item.class == 'excel_file'
+              div !{fa_excel_file+" "+item.name}
+            else if item.class == 'person_position'
+              div !{fa_group+" "+item.name}
+            else                
+              div !{fa_star+" "+item.name}
+        
+
+      each item in searchList[1]
+        .search-item
+          a(href='/persons/person-page?id=' + item._id) !{fa_group+" "+item.name}
+
+
+    else
+      div(style='font-size: 2vw;')
+        | Ничего не найдено
+
+  else
+    div(style='font-size: 2vw;')
+      | Введите запрос
+
+
+
+
+include ./components/footer.pug

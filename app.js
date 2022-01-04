@@ -1,13 +1,17 @@
 var express = require('express')
 var app = express()
 var mongo = require("mongodb")
+var url = require("url");
+var config = require('config');
+var persons = require('./persons');
+var nodemailer = require('nodemailer')
 
 
-var HOST = 'http://localhost' //192.168.10.153
-var PORT = 3000
-var URL = HOST + ":" + PORT
+var HOST = config.get('host'); // http://localhost  192.168.10.153
+var PORT = config.get('port');
+var DOMAIN = config.get('domain');
 const MongoClient = mongo.MongoClient
-const mongoClient = new MongoClient("mongodb+srv://markzum:163schoolTOP1@cluster0.gm56v.mongodb.net/myFirstDatabase?retryWrites=true&w=majority") //mongodb://localhost:27017/
+const mongoClient = new MongoClient(config.get('db')) //mongodb://localhost:27017/
 
 app.use('/static', express.static(__dirname + '/public')); //'static' is just url prefix
 app.use('/dist', express.static(__dirname + '/dist'));
@@ -26,7 +30,7 @@ app.get('/', (req, res) => {
         collection.find().toArray(function(err, results){
             if (err) {return console.log(err)}
             /* 'index' instead of 'index.pug' because of 'app.set('view engine', 'pug')' */
-            res.render('index', {host: URL, sectionTitle: "index", alerts: results});
+            res.render('index', {host: DOMAIN, sectionTitle: "index", alerts: results});
             client.close();
         });
     });
@@ -34,61 +38,80 @@ app.get('/', (req, res) => {
 
 
 
-//administration
-app.get('/persons/administration', (req, res) => {
-    mongoClient.connect(function(err, client){
-        if (err) {return console.log(err)}
-        const db = client.db("school");
-        const collection = db.collection("persons");
+//persons
+app.use('/persons', persons);
+
+
+
+//feedback
+app.get('/feedback', (req, res) => {
+    var name = url.parse(req.url, true).query.name
+    var email = url.parse(req.url, true).query.email
+    var recipient = url.parse(req.url, true).query.recipient
+    var subject = url.parse(req.url, true).query.subject
+    var text = url.parse(req.url, true).query.text
+
+    var transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+          user: "Lutchshiispiner@gmail.com",
+          pass: "zopapopa"
+        }
+    });
+
+    var to;
+    switch (recipient){
+        case "MarkMeshcheryakov":
+            to = 'markzum@yandex.ru'
+            break
+    }
     
-        collection.find({class: "administration"}).toArray(function(err, results){
-            if (err) {return console.log(err)}
-            var sorted_results = results.sort(sortPersonsArray);
-            res.render('administration', {host: URL, sectionTitle: "persons", persons: sorted_results});
-            client.close();
-        });
-    });
-});
-
-
-
-//teachers
-app.get('/persons/teachers', (req, res) => {
-    mongoClient.connect(function(err, client){
-        if (err) {return console.log(err)}
-        const db = client.db("school");
-        const collection = db.collection("persons");
+    let result = transporter.sendMail({
+      from: 'Школа №163 <Lutchshiispiner@gmail.com>',
+      to: to,
+      subject: subject,
+      html: "<strong>Сообщение от:</strong> " + name + "<br><strong>Email:</strong> " + email + "<br><br>" + text,
+    })
     
-        collection.find({class: "teacher"}).toArray(function(err, results){
-            if (err) {return console.log(err)}
-            var sorted_results = results.sort(sortPersonsArray);
-            res.render('teachers', {host: URL, sectionTitle: "persons", persons: sorted_results});
-            client.close();
-        });
-    });
+    res.redirect('/')
 });
 
 
 
-//person's page
-app.get('/persons/page*', (req, res) => {
-    mongoClient.connect(function(err, client){
-        if (err) {return console.log(err)}
-        const db = client.db("school");
-        const collection = db.collection("persons");
-        collection.find({"_id": mongo.ObjectId(req.url.replace('/persons/page', ''))}).toArray(function(err, results){
+// search
+app.get('/search', (req, res) => {
+    var q = url.parse(req.url, true).query.q
+    if (q){
+        mongoClient.connect(function(err, client){
             if (err) {return console.log(err)}
-            res.render('person-page', {host: URL, sectionTitle: "persons", person: results[0]});
-            client.close();
+            const db = client.db("school");
+            const collection1 = db.collection("search");
+            var searchList = []
+            collection1.find({ $text: { $search: q } }).toArray(function(err, results1){
+                if (err) {return console.log(err)}
+                searchList.push(results1)
+                const collection2 = db.collection("persons");
+                collection2.find({ $text: { $search: q } }).toArray(function(err, results2){
+                    searchList.push(results2)
+                    if (!(searchList[0][0] || searchList[1][0])) {
+                        searchList = 'no'
+                    }
+                    res.render('search', {host: DOMAIN, sectionTitle: "search", searchList: searchList, q: q});
+                    client.close();
+                });
+            });
+        
         });
-    });
+    } else {
+        res.render('search', {host: DOMAIN, sectionTitle: "search"})
+    }
 });
 
 
 
 // 404
 app.use(function(req, res, next) {
-    res.status(404).render('error-404', {host: URL});
+    res.status(404).render('error-404', {host: DOMAIN});
 });
 
 
@@ -96,9 +119,3 @@ app.use(function(req, res, next) {
 app.listen(PORT, () => {
     console.log(`Example app listening at ${HOST}:${PORT}`)
 })
-
-
-
-function sortPersonsArray(x, y){
-    return x.name.localeCompare(y.name);
-}

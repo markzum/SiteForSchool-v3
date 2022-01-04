@@ -1,0 +1,30 @@
+.feedback#feedback
+  .place1(style='margin: 12vh 12vw 0vh 12vw; padding: 1vw;')
+    p(style='font-size: 2vw;' align='center') Вопрос администрации школы
+    p(style='font-size: 1.3vw;' align='center').
+      Вы можете отправить сообщение или вопрос администрации школы прямо с этого сайта. Если вы хотите получить ответ, пожалуйста, представьтесь и сообщите свой контактный телефон или электронный адрес.
+
+    form(action="/feedback" method='get')
+      <input type="text" name="name" placeholder="Имя" required><br>
+      <input type="email" name="email" placeholder="Email" required><br>
+      <select name="recipient" required>
+        <option disabled selected>Выберите получателя</option>
+        <option value="MarkMeshcheryakov">Создатель сайта Мещеряков Марк</option>
+        <option value="Чебурашка2">Пункт 2</option>
+      </select><br>
+      <input type="text" name="subject" placeholder="Тема письма" required><br>
+      <textarea rows="10" cols="45" name="text" placeholder="Текст сообщения" required></textarea><br>
+      <input type="submit" value="Отправить">
+
+
+
+
+script(src="http://code.jquery.com/jquery-2.0.2.min.js")
+script.
+    $("#feedback").hide();
+    function feedbackShow(){
+        $("#feedback").fadeIn(duration=400);
+    }
+    function feedbackHide(){
+        $("#feedback").fadeOut(duration=400);
+    }

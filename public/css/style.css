@@ -115,3 +115,52 @@ a{
 a:hover{
 	color: rgb(152, 49, 236);
 }
+
+.feedback{
+	width: 100%;
+    min-height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    overflow: hidden;
+    position: fixed;
+    top: 0px;
+	z-index: 3;
+}
+
+.search-input{
+	width: 67.8vw; 
+	height: 6vh;
+	font-size: 2vw;
+	background-color:#d4efff;
+	border: 0.15vw solid lightgray;
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+	padding: 0.5vw;
+	outline: none;
+}
+
+.search-input:focus{
+	border: 0.15vw solid rgb(9, 150, 231);
+}
+
+.search-button{
+	width: 3vw;
+	height: 6vh;
+	background-color:#28d35b;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	padding: 0.7vw;
+	position: absolute;
+}
+
+.search-button:hover{
+	background-color:#23c253;
+}
+
+.search-item{
+	width: 71vw; 
+	background-color:#a9a8ff; 
+	border-radius: 10px; 
+	margin-top: 3vh;
+	padding: 0.8vw;
+	font-size: 1.6vw;
+}

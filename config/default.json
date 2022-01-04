@@ -1,0 +1,6 @@
+{
+    "host": "http://localhost",
+    "port": 3000,
+    "db": "mongodb+srv://markzum:163schoolTOP1@cluster0.gm56v.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    "domain": "http://localhost:3000"
+}
