@@ -1,20 +1,28 @@
 .feedback#feedback
-  .place1(style='margin: 12vh 12vw 0vh 12vw; padding: 1vw;')
+  .place1(style='margin: 5vh 12vw 0vh 12vw; padding: 1vw;')
     p(style='font-size: 2vw;' align='center') Вопрос администрации школы
-    p(style='font-size: 1.3vw;' align='center').
+    //p(style='font-size: 1.3vw;' align='center').
       Вы можете отправить сообщение или вопрос администрации школы прямо с этого сайта. Если вы хотите получить ответ, пожалуйста, представьтесь и сообщите свой контактный телефон или электронный адрес.
 
-    form(action="/feedback" method='get')
-      <input type="text" name="name" placeholder="Имя" required><br>
-      <input type="email" name="email" placeholder="Email" required><br>
-      <select name="recipient" required>
+    form(action="/feedback" method="post")
+      <input type="text" name="name" placeholder="Имя" required class="feedback-item" style="width: 34.25vw;">
+
+      <input type="email" name="email" placeholder="Ваш email" required class="feedback-item" style="width:  34.25vw;"><br>
+
+      <select name="recipient" required class="feedback-item" style="resize: none; width: 34.25vw;">
         <option disabled selected>Выберите получателя</option>
-        <option value="MarkMeshcheryakov">Создатель сайта Мещеряков Марк</option>
-        <option value="Чебурашка2">Пункт 2</option>
-      </select><br>
-      <input type="text" name="subject" placeholder="Тема письма" required><br>
-      <textarea rows="10" cols="45" name="text" placeholder="Текст сообщения" required></textarea><br>
-      <input type="submit" value="Отправить">
+        <option value="meshcheryakov">Создатель сайта Мещеряков Марк</option>
+        <option value="dementieva">Заведующая музеем Дементьевой А. В.</option>
+      </select>
+
+      <input type="text" name="subject" placeholder="Тема письма" required class="feedback-item" style="width: 34.25vw;"><br>
+
+      <textarea rows="10" name="text" placeholder="Текст сообщения" required class="feedback-item" style="resize: none; width: 70.8vw;"></textarea><br>
+      <div align="center">
+        <input type="submit" value="Отправить" style='margin: 1vw;' class="feedback-button">
+      </div>
+
+      div(style="position: absolute; top: 7vh; right: 13.5vw; cursor: pointer;" onclick="feedbackHide()") !{fa_close_3x}
 
 
 

@@ -1,0 +1,18 @@
+doctype html
+head
+  include ./../components/head.pug
+  title Официальный сайт 163 школы Санкт-Петербурга
+
+
+include ./../components/navbar.pug
+
+
+.place1(style='margin: 6vh 12vw 0vh 12vw; padding: 2vh 2vw 2vh 2vw; min-height: 90vh;')
+  p Пожалуйста авторизуйтесь
+  form(action="/admin/login" method="post")
+    input(type="text" name="username" required)
+    input(type="password" name="password" required)
+    input(type="submit" value="Login")
+
+
+include ./../components/footer.pug

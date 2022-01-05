@@ -1,0 +1,16 @@
+doctype html
+head
+  include ./components/head.pug
+  title Официальный сайт 163 школы Санкт-Петербурга
+
+
+include ./components/navbar.pug
+
+
+.place1(style='margin: 6vh 12vw 0vh 12vw; padding: 2vh 2vw 2vh 2vw; min-height: 90vh;')
+  p(style="font-size: 4vw; text-align: center; color: green;") Сообщение отправлено
+  p(style='text-align: center; padding-top: 5vh;')
+    button.success-feedback-button(onclick="window.location.href='/'") На главную
+
+
+include ./components/footer.pug

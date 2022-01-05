@@ -1,0 +1,24 @@
+doctype html
+head
+  include ./../components/head.pug
+  title Официальный сайт 163 школы Санкт-Петербурга
+
+
+include ./../components/navbar.pug
+
+
+.place1(style='margin: 6vh 12vw 0vh 12vw; padding: 2vh 2vw 2vh 2vw; min-height: 90vh;')
+
+  p Добавить объявление
+  form(action="/admin/alerts/add" method="post")
+    <textarea rows="10" name="alert_text" placeholder="Текст объявления" required style="resize: none; width: 60vw; height: 20vh;"></textarea><br>
+    input(type="submit" value="Добавить")
+
+  <hr>
+  each alert in alerts
+    div(style="padding: 2vh 2vw 2vh 2vw; border-radius: 10px; background-color: lightblue; margin: 2vw;")
+      p= alert.alert
+      a(href="/admin/alerts/delete?id="+alert._id) Удалить
+
+
+include ./../components/footer.pug

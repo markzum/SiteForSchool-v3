@@ -130,7 +130,6 @@ a:hover{
 	width: 67.8vw; 
 	height: 6vh;
 	font-size: 2vw;
-	background-color:#d4efff;
 	border: 0.15vw solid lightgray;
 	border-top-left-radius: 10px;
 	border-bottom-left-radius: 10px;
@@ -164,3 +163,42 @@ a:hover{
 	padding: 0.8vw;
 	font-size: 1.6vw;
 }
+
+.feedback-item{
+	border-radius: 10px; 
+	padding: 0.3vw;
+	margin: 1vw;
+	font-size: 1.4vw;
+	border: 0.15vw solid lightgray;
+	outline: none;
+
+}
+
+.feedback-item:focus{
+	border: 0.15vw solid rgb(39, 96, 255);
+}
+
+.feedback-button{
+	border-radius: 10px; 
+	background-color:#24aeee;
+	border: 0.2vw solid #24aeee;
+	font-size: 1.5vw;
+	padding: 0.4vw 1vh 0.4vw 1vh;
+}
+
+.feedback-button:hover{
+	background-color:rgb(103, 207, 255);
+}
+
+.success-feedback-button{
+	border-radius: 10px; 
+	background-color:#1fb800;
+	border: 0.2vw solid #1fb800;
+	font-size: 1.8vw;
+	padding: 0.4vw 1vh 0.4vw 1vh;
+}
+
+.success-feedback-button:hover{
+	background-color:rgb(61, 209, 56);
+}
+

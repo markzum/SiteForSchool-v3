@@ -1,0 +1,30 @@
+doctype html
+head
+  include ./../components/head.pug
+  title Официальный сайт 163 школы Санкт-Петербурга
+
+
+include ./../components/navbar.pug
+
+
+
+
+.place1(style='margin: 6vh 12vw 0vh 12vw; padding: 2vh 2vw 2vh 2vw; min-height: 90vh;')
+  //if success_action
+    div.success
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+      <strong>Успех!</strong> Действие успешно выполнено
+  
+
+  a(href="/admin/alerts") Объявления
+  <br>
+  a(href="/admin/logout") Выйти
+
+
+
+
+include ./../components/footer
+
+
+
+
