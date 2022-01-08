@@ -3,8 +3,6 @@ var app = express()
 var mongo = require("mongodb")
 var url = require("url");
 var config = require('config');
-var persons = require('./routes/persons');
-var admin = require('./routes/admin');
 var nodemailer = require('nodemailer')
 var bodyParser = require('body-parser')
 var cookieParser = require('cookie-parser')
@@ -19,9 +17,11 @@ var sender_pass = config.get('sender_pass');
 const MongoClient = mongo.MongoClient
 const mongoClient = new MongoClient(config.get('db')) //mongodb://localhost:27017/
 
-const urlencodedParser = bodyParser.urlencoded({extended: false,})
+
+app.use(bodyParser.urlencoded({extended: false,}))
 
 app.use('/static', express.static(__dirname + '/public')); //'static' is just url prefix
+app.use('/storage', express.static(__dirname + '/storage')); 
 
 app.set('view engine', 'pug');
 
@@ -53,16 +53,16 @@ app.get('/', (req, res) => {
 
 //import other files
 //persons
-app.use('/persons', persons);
+app.use('/persons', require('./routes/persons'));
 //admin
-app.use('/admin', admin);
+app.use('/admin', require('./routes/admin'));
 
 
 
 
 
 //feedback
-app.post('/feedback', urlencodedParser, (req, res) => {
+app.post('/feedback', (req, res) => {
     if (!req.body) return res.sendStatus(400)
     var name = req.body.name
     var email = req.body.email

@@ -1,5 +1,6 @@
 body{
-	background: linear-gradient(to top, #8860D0, #84CEEB);
+	/*background: linear-gradient(to top, #8860D0, #84CEEB);*/
+	background-color: #84CEEB;
 	margin: 0;
 }
 
@@ -157,7 +158,7 @@ a:hover{
 
 .search-item{
 	width: 71vw; 
-	background-color:#a9a8ff; 
+	background-color:#cac9ff; 
 	border-radius: 10px; 
 	margin-top: 3vh;
 	padding: 0.8vw;

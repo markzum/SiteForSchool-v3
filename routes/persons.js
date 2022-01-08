@@ -21,6 +21,9 @@ router.get('/administration', (req, res) => {
         collection.find({class: "administration"}).toArray(function(err, results){
             if (err) {return console.log(err)}
             var sorted_results = results.sort(sortPersonsArray);
+            for (var pers of sorted_results) {
+                pers.img = pers.img.replace("%domain%", DOMAIN)
+            }
             res.render('persons/administration', {host: DOMAIN, sectionTitle: "persons", persons: sorted_results});
             client.close();
         });
@@ -39,6 +42,9 @@ router.get('/teachers', (req, res) => {
         collection.find({class: "teacher"}).toArray(function(err, results){
             if (err) {return console.log(err)}
             var sorted_results = results.sort(sortPersonsArray);
+            for (var pers of sorted_results) {
+                pers.img = pers.img.replace("%domain%", DOMAIN)
+            }
             res.render('persons/teachers', {host: DOMAIN, sectionTitle: "persons", persons: sorted_results});
             client.close();
         });
@@ -57,6 +63,8 @@ router.get('/person-page', (req, res) => {
         collection.find({"_id": mongo.ObjectId(id)}).toArray(function(err, results){
             if (err) {return console.log(err)}
             if (results[0]) {
+                results[0].img = results[0].img.replace("%domain%", DOMAIN)
+                
                 res.render('persons/person-page', {host: DOMAIN, sectionTitle: "persons", person: results[0]});
             } else {
                 res.status(404).render('error-404', {host: DOMAIN});

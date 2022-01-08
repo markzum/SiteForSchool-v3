@@ -1,7 +1,7 @@
 doctype html
 head
   include ./../components/head.pug
-  title Официальный сайт 163 школы Санкт-Петербурга
+  title !{person.name} - Официальный сайт 163 школы Санкт-Петербурга
 
 
 
@@ -24,25 +24,7 @@ include ./../components/navbar.pug
 
 
 
-if person.position == 'director'
-    - var position_img_src=host+'/static/img/director_img.png'
-if person.position == 'ass_director'
-    - var position_img_src=host+'/static/img/ass_director_img.png'
-if person.position == 'manager'
-    - var position_img_src=host+'/static/img/manager_img.png'
-if person.position == 'primary'
-    - var position_img_src=host+'/static/img/primary_img.png'
-if person.position == 'rus_and_liter'
-    - var position_img_src=host+'/static/img/rus_and_liter_img.png'
-if person.position == 'math'
-    - var position_img_src=host+'/static/img/math_img.png'
-if person.position == 'physics'
-    - var position_img_src=host+'/static/img/physics_img.png'
-if person.position == 'obzh'
-    - var position_img_src=host+'/static/img/obzh_img.png'
-if person.position == 'it'
-    - var position_img_src=host+'/static/img/it_img.png'
-
+- var position_img_src=host+'static/img/'+person.position+'_img.png'
 
 
 
@@ -50,7 +32,7 @@ if person.position == 'it'
   div(style='display: inline-block; padding-right: 1.5vw;')
     div(style='border-radius: 25px; border: 2px solid blue; padding: 0.9vw;')
       if person.img == 'no'
-        img(src=host+'/static/img/person-photo.png' style='width: 12vw; border-radius: 15px;')
+        img(src=host+'static/img/person-photo.png' style='width: 12vw; border-radius: 15px;')
       else
         img(src=person.img style='width: 12vw; border-radius: 15px;')
     img(src=position_img_src style='width: 10vw; margin-top: 4vh; margin-left: 2.05vw;')

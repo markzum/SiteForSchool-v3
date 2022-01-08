@@ -1,7 +1,7 @@
 doctype html
 head
   include ./../components/head.pug
-  title Официальный сайт 163 школы Санкт-Петербурга
+  title Администрирование - Официальный сайт 163 школы Санкт-Петербурга
 
 
 include ./../components/navbar.pug
@@ -15,8 +15,15 @@ include ./../components/navbar.pug
       <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
       <strong>Успех!</strong> Действие успешно выполнено
   
-
+  div(style="font-size: 1.5vw;") Главное
   a(href="/admin/alerts") Объявления
+  <br>
+  a(href="/admin/persons") Персоналии
+  <br>
+  <br>
+  div(style="font-size: 1.5vw;") Дополнительно
+  a(href="/admin/persons-storage") Хранилище фото персон
+  <br>
   <br>
   a(href="/admin/logout") Выйти
 

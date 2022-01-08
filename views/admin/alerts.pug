@@ -1,24 +1,44 @@
 doctype html
 head
   include ./../components/head.pug
-  title Официальный сайт 163 школы Санкт-Петербурга
+  title Администрирование - Официальный сайт 163 школы Санкт-Петербурга
 
 
 include ./../components/navbar.pug
 
 
 .place1(style='margin: 6vh 12vw 0vh 12vw; padding: 2vh 2vw 2vh 2vw; min-height: 90vh;')
+  a(href="/admin") !{fa_arrow_left} Назад
 
-  p Добавить объявление
+  div(style="font-size: 1.5vw;") Добавить объявление
   form(action="/admin/alerts/add" method="post")
-    <textarea rows="10" name="alert_text" placeholder="Текст объявления" required style="resize: none; width: 60vw; height: 20vh;"></textarea><br>
-    input(type="submit" value="Добавить")
+    <fieldset style="margin: 1vw;">
+      <label for="alert_text">Текст объявления</label><br>
+      <textarea rows="10" name="alert_text" id="alert_text" required style="resize: none; width: 60vw; height: 20vh;"></textarea><br>
+    </fieldset>
+    input(type="submit" value="Добавить" style="margin-left: 1vw;")
+
 
   <hr>
+  input(type="search" id="search" placeholder="Поиск")
   each alert in alerts
-    div(style="padding: 2vh 2vw 2vh 2vw; border-radius: 10px; background-color: lightblue; margin: 2vw;")
-      p= alert.alert
+    div.alert-item(style="padding: 2vh 2vw 2vh 2vw; border-radius: 10px; background-color: lightblue; margin: 2vw;")
+      p= "Объявление: "+alert.alert
       a(href="/admin/alerts/delete?id="+alert._id) Удалить
 
 
 include ./../components/footer.pug
+
+script.
+  var input = document.getElementById("search")
+  var items = document.getElementsByClassName("alert-item")
+  input.oninput = function(){
+        for (index = 0; index < items.length; ++index){
+            var item = items[index]
+            if (item.innerHTML.toLowerCase().includes(input.value.toLowerCase())){
+                item.style.display = ""
+            } else {
+                item.style.display = "none"
+            }
+        }
+  }

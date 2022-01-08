@@ -1,0 +1,192 @@
+doctype html
+head
+  include ./../components/head.pug
+  title Администрирование - Официальный сайт 163 школы Санкт-Петербурга
+
+
+include ./../components/navbar.pug
+
+
+
+<dialog style="width: 70vw;">
+  h3 СПРАВКА
+  p.
+    <b>Краткое описание</b> - описание, находящееся на карточке человека.<br>
+    <b>Полное описание</b> - описание, находящееся на странице человека.
+  p.
+    <b>Класс:</b><br>
+    Администрация (administration), 
+    Учитель (teacher),
+    Педагог ОДОД (teacher_odod).
+  p.
+    <b>Должность/Предмет:</b><br>
+    Директор (director), 
+    Заместитель директора (ass_director), 
+    Руководитель структурных подразделений (manager) - <b>Администрация.</b><br>
+    Начальная школа (primary), 
+    Русский язык и литература (rus_and_liter), 
+    Математика (math), 
+    Физика (physics), 
+    Химия (chemistry), 
+    ОБЖ (obzh), 
+    Информатика и ИКТ (it), 
+    География и биология (geo_and_bio), 
+    Английский язык (english), 
+    История и обществознание (history_and_social), 
+    Физкультура (sport), 
+    Музыка (music), 
+    Изобразительное искусство (art), 
+    Технология (technology) - <b>Учителя</b>.
+  p.
+    <b>При указании несоответствующих класса и должности/предмета персона не будет отображаться.</b>
+  p.
+    <b>Фото *не обязательно*:</b>
+    Фотография человека будет отображаться на карточке и на странице персоны.<br>
+    Вы можете загрузить фото (оно добавиться в <a href="/admin/persons-storage">хранилище</a>), 
+    указать имя файла (с расширением) уже нахдящегося в хранилище или указать полную ссылку на 
+    изображение в другом ресурсе.<br>
+    Если фото отсутствует, ничего не указывайте.
+  p.
+    <b>При удалении персоны, фото из хранилища не удаляется.</b>
+  p.
+    <b>При загрузке фото с уже существующим именем, старое фото удалится.</b>
+
+
+
+  <button id="close_help">Закрыть</button>
+</dialog>
+
+
+
+.place1(style='margin: 6vh 12vw 0vh 12vw; padding: 2vh 2vw 2vh 2vw; min-height: 90vh;')
+  a(href="/admin") !{fa_arrow_left} Назад<br>
+  button(id="show_help" style="margin: 2vh 0 2vh 0;") СПРАВКА
+  div(style="font-size: 1.5vw;") Добавить персоналию
+
+  form(action="/admin/persons/add" method="post" enctype="multipart/form-data")
+
+    <input type="text" name="name" required style="width: 20vw; margin: 0.5vw; margin-top: 1vw;" placeholder="Имя" autocomplete="off"><br>
+
+    <textarea rows="10" name="short_description" placeholder="Краткое описание" required style="resize: none; width: 60vw; height: 20vh; margin: 0.5vw;"></textarea><br>
+
+    <textarea rows="10" name="description" placeholder="Полное описание" required style="resize: none; width: 60vw; height: 25vh; margin: 0.5vw;"></textarea><br>
+
+    <label for="class">Класс:</label>
+    <select name="class" id="class" required style="margin: 0.5vw;">
+      <option value="administration" selected>Администрация</option>
+      <option value="teacher">Учитель</option>
+      <option value="teacher_odod">Педагог ОДОД</option>
+    </select><br>
+
+
+    <div class="administration_position_div">
+      <label for="administration_position">Должность:</label>
+      <select name="position" id="administration_position" required style="margin: 0.5vw;">
+        <option value="director">Директор</option>
+        <option value="ass_director">Заместитель директора</option>
+        <option value="manager">Руководитель структурных подразделений</option>
+      </select>
+    </div>
+
+    <div class="teacher_position_div">
+      <label for="teacher_position">Предмет:</label>
+      <select name="position" id="teacher_position" required style="margin: 0.5vw;">
+        <option value="primary">Начальная школа</option>
+        <option value="rus_and_liter">Русский язык и литература</option>
+        <option value="math">Математика</option>
+        <option value="physics">Физика</option>
+        <option value="chemistry">Химия</option>
+        <option value="obzh">ОБЖ</option>
+        <option value="it">Информатика и ИКТ</option>
+        <option value="geo_and_bio">География и биология</option>
+        <option value="english">Английский язык</option>
+        <option value="history_and_social">История и обществознание</option>
+        <option value="sport">Физкультура</option>
+        <option value="music">Музыка</option>
+        <option value="art">Изобразительное искусство</option>
+        <option value="technology">Технология</option>
+      </select>
+    </div>
+    
+    <br>
+
+
+    <fieldset style="border: 3px dotted lightgray; padding: 1vw;">
+      <legend>Фото человека</legend>
+      <input type="file" name="photo" style="margin: 0.5vw;" accept="image/*"><br>
+      <label for="photo2">или</label>
+      <input type="text" name="photo2" id="photo2" placeholder="Введите имя файла" style="width: 20vw;"><br>
+      <label for="photo3">или</label>
+      <input type="text" name="photo3" id="photo3" placeholder="Введите ссылку на изображение" style="width: 35vw;"><br>
+      <br>
+    </fieldset>
+
+    input(type="submit" value="Добавить" style="margin: 0.5vw;")
+
+
+  <hr>
+  input(type="search" id="search" placeholder="Поиск")
+  each person in persons
+    div.alert-item(style="padding: 2vh 2vw 2vh 2vw; border-radius: 10px; background-color: lightblue; margin: 2vw;")
+      p= "Имя: "+person.name
+      p= "Краткое описание: "+person.short_description
+      p= "Описание: "+person.description
+      p= "Класс: "+person.class
+      p= "Должность/Предмет: "+person.position
+      p= "Фотография: "+person.img
+      a(href="/admin/persons/delete?id="+person._id) Удалить
+
+
+include ./../components/footer.pug
+
+script.
+  var input = document.getElementById("search")
+  var items = document.getElementsByClassName("alert-item")
+  input.oninput = function(){
+        for (index = 0; index < items.length; ++index){
+            var item = items[index]
+            if (item.innerHTML.toLowerCase().includes(input.value.toLowerCase())){
+                item.style.display = ""
+            } else {
+                item.style.display = "none"
+            }
+        }
+  }
+
+script.
+  var dialog = document.querySelector('dialog');
+  document.querySelector('#show_help').onclick = function() {
+    dialog.show();
+  };
+  document.querySelector('#close_help').onclick = function() {
+    dialog.close();
+  };
+
+script.
+  document.getElementById("teacher_position").disabled = true
+  $('.teacher_position_div').hide()
+  $(function() {
+    $('#class').change(function () {
+        var vibor = $(this).find(':selected').val();
+
+        if(vibor == 'administration') {
+          document.getElementById("administration_position").disabled = false
+          document.getElementById("teacher_position").disabled = true
+          $('.administration_position_div').show()
+          $('.teacher_position_div').hide()
+
+        } else if(vibor == 'teacher') {
+          document.getElementById("teacher_position").disabled = false
+          document.getElementById("administration_position").disabled = true
+          $('.administration_position_div').hide()
+          $('.teacher_position_div').show()
+
+        } else if(vibor == 'teacher_odod') {
+          document.getElementById("administration_position").disabled = true
+          document.getElementById("teacher_position").disabled = true
+          $('.administration_position_div').hide()
+          $('.teacher_position_div').hide()
+        } 
+    });
+  });
+

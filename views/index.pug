@@ -40,7 +40,7 @@ each alert in alerts
     tr
       td
         // О школе
-        +menuCard(host+'/static/img/school.png', 
+        +menuCard(host+'static/img/school.png', 
           'О школе', 
           ['Визитка', 'Приём в школу', 'Документы', 'Достижения', 'Отзывы', 'Контакты'], 
           ['', '', '', '', '' ,''],
@@ -48,7 +48,7 @@ each alert in alerts
         
       td
         // Учеба
-        +menuCard(host+'/static/img/study.png', 
+        +menuCard(host+'static/img/study.png', 
           'Учеба', 
           ['Расписание', 'ГИА(ЕГЭ, ОГЭ)', 'Электр. дневник', 'Учебный план', 'Дист. обучение', 'Проекты'], 
           ['', '', '', '', '' ,''],
@@ -57,7 +57,7 @@ each alert in alerts
     tr
       td
         // Жизнь
-        +menuCard(host+'/static/img/live.png', 
+        +menuCard(host+'static/img/live.png', 
           'Жизнь', 
           ['Новости', 'Питание', 'Воспит. работа', 'ОДОД (кружки)', 'Спортклуб', 'Театр на Кирочной'], 
           ['', '', '', '', '' ,''],
@@ -65,7 +65,7 @@ each alert in alerts
 
       td
         // Персоналии
-        +menuCard(host+'/static/img/persons.png', 
+        +menuCard(host+'static/img/persons.png', 
           'Персоналии', 
           ['Администрация', 'Учителя', 'Педагоги ОДОД', 'Социальный педагог', 'Психолог', 'Логопед'], 
           ['/persons/administration', '/persons/teachers', '/persons', '/persons', '/persons' ,'/persons'],
@@ -74,7 +74,7 @@ each alert in alerts
     tr
       td
         // История
-        +menuCard(host+'/static/img/history.png', 
+        +menuCard(host+'static/img/history.png', 
           'История', 
           ['История школы', 'Здание', 'Директора', 'Традиции', 'Выпускники', 'Музей'], 
           ['', '', '', '', '' ,''],
@@ -82,7 +82,7 @@ each alert in alerts
 
       td
         // Учителям
-        +menuCard(host+'/static/img/for-teachers.png', 
+        +menuCard(host+'static/img/for-teachers.png', 
           'Учителям', 
           ['Документы', 'Методики', 'Дист. обучение', 'Ссылки'], 
           ['', '', '', ''],
@@ -97,7 +97,7 @@ each alert in alerts
 include ./components/footer.pug
 
 script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js' integrity='sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj' crossorigin='anonymous')
-script(src=host+'/static/js/wow.min.js')
+script(src=host+'static/js/wow.min.js')
 script.
   new WOW().init();
 script(src='https://unpkg.com/aos@2.3.1/dist/aos.js')
