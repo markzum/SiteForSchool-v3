@@ -1,0 +1,35 @@
+include ./../components/person-card.pug
+
+
+
+doctype html
+head
+  include ./../components/head.pug
+  title Учителя - Официальный сайт 163 школы Санкт-Петербурга
+
+
+
+include ./../components/navbar.pug
+.subnavbar
+  header(style='padding-top: 2vh!important; padding-bottom: 2vh!important;' class='d-flex py-3')
+    ul.nav.nav-pills(style='font-weight: bold; font-size: 0.9vw; margin-left: 1vw;')
+      li.nav-item
+        a.sub-nav-link-edit.nav-link(href='/persons/administration') Администрация
+      li.nav-item
+        a.sub-nav-link-edit.nav-link(href='/persons/teachers' aria-current='page') Учителя
+      li.nav-item
+        a.sub-nav-link-edit.nav-link.active(href='/persons/teachers-odod') Педагоги ОДОД
+      li.nav-item
+        a.sub-nav-link-edit.nav-link(href='/persons/social-pedagogue') Социальный педагог
+      li.nav-item
+        a.sub-nav-link-edit.nav-link(href='#') Психолог
+      li.nav-item
+        a.sub-nav-link-edit.nav-link(href='') Логопед
+
+
+
++person-card('no')
+
+
+
+include ./../components/footer.pug

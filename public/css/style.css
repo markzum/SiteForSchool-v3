@@ -23,11 +23,6 @@ body{
     width: 37vw;
 }
 
-.ul-link{
-	list-style: url(../img/arrow-for-list-16.png);
-	font-size: 2vh;
-}
-
 .alert{
 	background: rgb(253, 177, 37);
 	border-radius: 20px;
@@ -45,6 +40,11 @@ body{
 }
 
 
+
+.topic{
+	font-size: 2.3vw;
+}
+
 .topic-a{
 	text-decoration: none;
 	color: black;
@@ -59,12 +59,7 @@ body{
 	padding: 10px 0px 10px 0px;
 }
 
-.subnavbar{
-	background: white; 
-	display: flex; 
-	justify-content: center; 
-	border-top: 1px solid lightgrey;
-}
+
 
 .position-title{
 	margin-top: 10vh; 
@@ -96,6 +91,15 @@ body{
 	align-items: center;
 }
 
+
+
+.subnavbar{
+	background: white; 
+	display: flex; 
+	justify-content: center; 
+	border-top: 1px solid lightgrey;
+}
+
 .sub-nav-link-edit{
 	padding: 0.3vw!important;
 	padding-left: 1.2vw!important;
@@ -108,6 +112,15 @@ body{
 	padding-right: 1.2vw!important;
 }
 
+.navbar-main-div{
+	background: white; 
+	top: 0; 
+	width: 100%; 
+	z-index: 2;
+}
+
+
+
 a{
 	text-decoration: none;
 	color: rgb(23, 20, 243);
@@ -117,15 +130,7 @@ a:hover{
 	color: rgb(152, 49, 236);
 }
 
-.feedback{
-	width: 100%;
-    min-height: 100%;
-    background-color: rgba(0,0,0,0.5);
-    overflow: hidden;
-    position: fixed;
-    top: 0px;
-	z-index: 3;
-}
+
 
 .search-input{
 	width: 67.8vw; 
@@ -163,6 +168,18 @@ a:hover{
 	margin-top: 3vh;
 	padding: 0.8vw;
 	font-size: 1.6vw;
+}
+
+
+
+.feedback{
+	width: 100%;
+    min-height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    overflow: hidden;
+    position: fixed;
+    top: 0px;
+	z-index: 3;
 }
 
 .feedback-item{
@@ -203,3 +220,52 @@ a:hover{
 	background-color:rgb(61, 209, 56);
 }
 
+.feedback-hide-button{
+	position: absolute;
+	top: 7vh;
+	right: 13.5vw;
+	cursor: pointer;
+}
+
+
+
+.more-features-div{
+	position: absolute;
+	top: 3.6vw;
+	right: 0.6vw;
+	background: rgb(255, 255, 255);
+	border-radius: 1vw;
+	border: 0.2vw solid #0382bd;
+	padding: 1.4vh 0.5vw 1.4vh 0.5vw;
+	width: 10vw;
+	z-index: 3;
+}
+
+.more-features-button:hover{
+	transform: rotate(180deg);
+	transition: 0.5s;
+}
+
+
+
+.person-img-border{
+	border-radius: 25px;
+	border: 2px solid blue;
+	padding: 0.9vw;
+}
+
+.person-img{
+	width: 12vw;
+	border-radius: 15px;
+}
+
+.fa-color{
+	color: black;
+}
+
+
+
+.indent1{
+	margin: 6vh 12vw 0vh 12vw;
+	padding: 2vh 2vw 2vh 2vw;
+}

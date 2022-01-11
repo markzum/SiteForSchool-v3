@@ -22,12 +22,11 @@
         <input type="submit" value="Отправить" style='margin: 1vw;' class="feedback-button">
       </div>
 
-      div(style="position: absolute; top: 7vh; right: 13.5vw; cursor: pointer;" onclick="feedbackHide()") !{fa_close_3x}
+      .feedback-hide-button(onclick="feedbackHide()") !{fa_close_2x}
 
 
 
 
-script(src="http://code.jquery.com/jquery-2.0.2.min.js")
 script.
     $("#feedback").hide();
     function feedbackShow(){

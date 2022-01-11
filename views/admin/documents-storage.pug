@@ -1,0 +1,70 @@
+doctype html
+head
+  include ./../components/head.pug
+  title Администрирование - Официальный сайт 163 школы Санкт-Петербурга
+
+
+include ./../components/navbar.pug
+
+
+
+<dialog>
+  h3 СПРАВКА
+  p.
+    <b>При загрузке документа с уже существующим именем, старый документ удалится.</b>
+
+
+
+  <button id="close_help">Закрыть</button>
+</dialog>
+
+
+
+.place1(style='margin: 6vh 12vw 0vh 12vw; padding: 2vh 2vw 2vh 2vw; min-height: 90vh;')
+  a(href="/admin") !{fa_arrow_left} Назад <br>
+
+  button(id="show_help" style="margin: 2vh 0 2vh 0;") СПРАВКА
+  div(style="font-size: 1.5vw; margin-bottom: 1vh;") Добавить документ
+
+  form(action="/admin/documents-storage/add" method="post" enctype="multipart/form-data")
+
+    <input type="file" name="document" style="margin: 0.5vw;" required><br>
+
+    input(type="submit" value="Добавить" style="margin: 0.5vw;")
+
+
+  <hr>
+  input(type="search" id="search" placeholder="Поиск")
+  each document in documents
+    div.alert-item(style="padding: 2vh 2vw 2vh 2vw; border-radius: 10px; background-color: lightblue; margin: 2vw;")
+
+      a(href=document.url)= document.name
+      <br><br>
+      a(href="/admin/documents-storage/delete?filename="+document.name) Удалить
+
+
+
+include ./../components/footer.pug
+
+script.
+  var input = document.getElementById("search")
+  var items = document.getElementsByClassName("alert-item")
+  input.oninput = function(){
+        for (index = 0; index < items.length; ++index){
+            var item = items[index]
+            if (item.innerHTML.toLowerCase().includes(input.value.toLowerCase())){
+                item.style.display = ""
+            } else {
+                item.style.display = "none"
+            }
+        }
+  }
+
+script.
+  var dialog = document.querySelector('dialog');
+  document.querySelector('#show_help').onclick = function() {
+    dialog.show();
+  };
+  document.querySelector('#close_help').onclick = function() {
+    dialog.close();
+  };

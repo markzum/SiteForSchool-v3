@@ -1,21 +1,17 @@
 mixin menuCard(img, topic, items, urls, animSide, br=false)
-  .place2.aos(data-aos=animSide data-aos-once='true' data-aos-offset='50')
-    table(style='border-collapse: separate; border-spacing: 4vw 2vh;')
+  .place2.aos(data-aos=animSide data-aos-once='true' data-aos-offset='50' style="height: 41vh;")
+    table(style='border-collapse: separate; border-spacing: 3vw 2vh;')
       tr
         td(rowspan='3')
           img(src=img style="width: 10vw;")
         td
-          h1(style='font-size: 2.3vw;')=topic
+          h1.topic=topic
       tr
         td
-          ul.ul-link
-            each item, i in items
-              li
-                a.topic-a(href=urls[i] style='font-size: 1.5vw;')=item
-            if br
-              br
-              br
-              br
+          each item, i in items
+            a.topic-a(href=urls[i] style='font-size: 1.5vw;') !{fa_chevron_right} !{item}
+            <br>
+            
 
 
 
@@ -68,7 +64,7 @@ each alert in alerts
         +menuCard(host+'static/img/persons.png', 
           'Персоналии', 
           ['Администрация', 'Учителя', 'Педагоги ОДОД', 'Социальный педагог', 'Психолог', 'Логопед'], 
-          ['/persons/administration', '/persons/teachers', '/persons', '/persons', '/persons' ,'/persons'],
+          ['/persons/administration', '/persons/teachers', '/persons/teachers-odod', '/persons', '/persons' ,'/persons'],
           'fade-left')
 
     tr

@@ -1,0 +1,48 @@
+doctype html
+head
+  include ./../components/head.pug
+  title Социальный педагог - Официальный сайт 163 школы Санкт-Петербурга
+
+
+
+include ./../components/navbar.pug
+.subnavbar
+  header(style='padding-top: 2vh!important; padding-bottom: 2vh!important;' class='d-flex py-3')
+    ul.nav.nav-pills(style='font-weight: bold; font-size: 0.9vw; margin-left: 1vw;')
+      li.nav-item
+        a.sub-nav-link-edit.nav-link(href='/persons/administration') Администрация
+      li.nav-item
+        a.sub-nav-link-edit.nav-link(href='/persons/teachers') Учителя
+      li.nav-item
+        a.sub-nav-link-edit.nav-link(href='/persons/teachers-odod') Педагоги ОДОД
+      li.nav-item
+        a.sub-nav-link-edit.nav-link.active(href='/persons/social-pedagogue') Социальный педагог
+      li.nav-item
+        a.sub-nav-link-edit.nav-link(href='#') Психолог
+      li.nav-item
+        a.sub-nav-link-edit.nav-link(href='') Логопед
+
+
+
+.place1.indent1(style='display: flex;')
+  .person-img-border
+    img.person-img(src=host+"storage/persons-storage/kayanovich.jpg")
+  div(style="padding-left: 1.5vw;") 
+    p(style="font-size: 2.0vw;") Каянович Юлия Валерьевна
+    <br>
+    p(style="font-size: 1.3vw;").
+      Образование высшее. С января 2014 года работает в 163-й школе.<br><br>
+      !{fa_phone} +7 (812) 275-21-24<br>
+      <strong>Прием</strong>:<br>
+      понедельник, 10:00-16:00<br>
+      вторник, 8:00-16:00<br>
+      среда, 10:00-16:00<br>
+      четверг, 8:00-16:00<br>
+      пятница, 12:00-16:00<br>
+      (кабинет 4-23, 4 этаж) <br>
+
+
+
+
+
+include ./../components/footer.pug
