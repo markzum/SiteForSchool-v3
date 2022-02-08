@@ -135,6 +135,7 @@ include ./../components/navbar.pug
       p= "Должность/Предмет: "+person.position
       p= "Фотография: "+person.img
       a(href="/admin/persons/delete?id="+person._id) Удалить
+      a(href="/admin/persons/edit?id="+person._id style="margin-left: 1vw;") Изменить
 
 
 include ./../components/footer.pug

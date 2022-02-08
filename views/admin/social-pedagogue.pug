@@ -1,0 +1,145 @@
+doctype html
+head
+  include ./../components/head.pug
+  title Администрирование - Официальный сайт 163 школы Санкт-Петербурга
+
+
+include ./../components/navbar.pug
+
+
+
+<dialog style="width: 70vw;">
+  h3 СПРАВКА
+  p.
+    <b>Теги редактирования текста:</b><br>
+    #{'<b>Текст</b>'} - <b>Жирный шрифт</b> <br>
+    #{'<br>'} - Перенос строки <br>
+    #{'<i>Текст</i>'} - <i>Курсив</i> <br>
+    #{'<a href="ссылка">Текст</a>'} - <a href="/admin/social-pedagogue">Ссылка</a> <br>
+    <br>
+    <b>Чтобы оставить ссылку на документ:</b> <br>
+    1) Загрузить документ на сайт. <br>
+    Название документов страницы "Социальный педагог" должны начинаться с "social-pedagogue_" (при загрузке на сайт префикс добавляется автоматически). <br>
+    2) Добавить значек, соответствующий типу файла. (Не забудьте пробел после значка для красоты) <br>
+    3) Перед значком и текстом ссылки добавить #{'<a href="%url%social-pedagogue_document.pdf">'}, a после #{'</a>'}<br>
+    social-pedagogue_document.pdf - имя документа<br>
+    Если нужно указать ссылку на другой сайт, укажите ее вместо %url%social-pedagogue_document.pdf<br>
+    <b>Пример:</b> <br>
+    #{'<a href="%url%social-pedagogue_document.pdf">%fa-pdf% Документ о чем-нибудь</a>'} <br>
+    <br>
+    <b>Значки файлов:</b> <br>
+    !{fa_word_file} %fa-word% - значек word <br>
+    !{fa_powerpoint_file} %fa-powerpoint% - значек powerpoint <br>
+    !{fa_pdf_file} %fa-pdf% - значек pdf <br>
+    !{fa_excel_file} %fa-excel% - значек excel <br>
+    !{fa_archive_file} %fa-archive% - значек архива <br>
+    !{fa_youtube} %fa-youtube% - значек youtube (видео) <br>
+    !{fa_external_link} %fa-external-link% - значек ссылки на другой сайт <br>
+    !{fa_phone} %fa-phone% - значек телефона <br>
+  
+
+  <button id="close_help">Закрыть</button>
+</dialog>
+
+
+
+.place1(style='margin: 6vh 12vw 0vh 12vw; padding: 2vh 2vw 2vh 2vw; min-height: 90vh;')
+  a(href="/admin") !{fa_arrow_left} Назад<br>
+  button(id="show_help" style="margin: 2vh 0 2vh 0;") СПРАВКА
+  div(style="font-size: 1.5vw;") Редактирование страницы "Социальный педагог"
+
+
+  form(action="/admin/social-pedagogue/update" method="post")
+    input(type="text" name="name" required style="width: 30vw; margin: 0.5vw; margin-top: 1vw;" placeholder="Имя" autocomplete="off" value=data.name)
+    <br>
+    <br>
+    input(type="text" name="img" required style="width: 30vw; margin: 0.5vw; margin-top: 1vw;" placeholder="Имя файла фото" autocomplete="off" value=data.img)
+    <br>
+    <br>
+    textarea(rows="10" name="text0" placeholder="Текст 0" required style="resize: none; width: 70vw; height: 40vh; margin: 0.5vw;")= data.text0
+    <br>
+    <br>
+
+    input(type="text" name="title1" required style="width: 30vw; margin: 0.5vw; margin-top: 1vw;" placeholder="Заголовок 1" autocomplete="off" value=data.title1)
+    <br>
+    textarea(name="text1" placeholder="Текст 1" required style="resize: none; width: 70vw; height: 40vh; margin: 0.5vw;")= data.text1
+    <br>
+    <br>
+
+    input(type="text" name="title2" required style="width: 30vw; margin: 0.5vw; margin-top: 1vw;" placeholder="Заголовок 2" autocomplete="off" value=data.title2)
+    <br>
+    textarea(rows="10" name="text2" placeholder="Текст 2" required style="resize: none; width: 70vw; height: 40vh; margin: 0.5vw;")= data.text2
+    <br>
+    <br>
+
+    input(type="text" name="title3" required style="width: 30vw; margin: 0.5vw; margin-top: 1vw;" placeholder="Заголовок 3" autocomplete="off" value=data.title3)
+    <br>
+    textarea(rows="10" name="text3" placeholder="Текст 3" required style="resize: none; width: 70vw; height: 40vh; margin: 0.5vw;")= data.text3
+    <br>
+    <br>
+
+    input(type="text" name="title4" required style="width: 30vw; margin: 0.5vw; margin-top: 1vw;" placeholder="Заголовок 4" autocomplete="off" value=data.title4)
+    <br>
+    textarea(rows="10" name="text4" placeholder="Текст 4" required style="resize: none; width: 70vw; height: 40vh; margin: 0.5vw;")= data.text4
+    <br>
+    <br>
+
+    input(type="text" name="title5" required style="width: 30vw; margin: 0.5vw; margin-top: 1vw;" placeholder="Заголовок 5" autocomplete="off" value=data.title5)
+    <br>
+    textarea(rows="10" name="text5" placeholder="Текст 5" required style="resize: none; width: 70vw; height: 40vh; margin: 0.5vw;")= data.text5
+    <br>
+    <br>
+
+    input(type="submit" value="Готово" style="margin: 0.5vw;")
+  <br>
+  a(href="/admin") Отмена
+  <hr>
+
+  // documents
+  form(action="/admin/social-pedagogue/add-document" method="post" enctype="multipart/form-data")
+    <input type="file" name="document" style="margin: 0.5vw;" required><br>
+    input(type="submit" value="Добавить" style="margin: 0.5vw;")
+
+
+  <hr>
+  input(type="search" id="search" placeholder="Поиск")
+  each file in files
+    div.alert-item(style="padding: 2vh 2vw 2vh 2vw; border-radius: 10px; background-color: lightblue; margin: 2vw;")
+      div(style='display: flex;')
+        if file.type == "jpg" || file.type == "jpeg" || file.type == "png" || file.type == "gif"
+          img(src=file.url style="width: 5vw; margin: 0 0.4vw 0.5vh 0;")
+        if file.type == "pdf"
+          div <i class="fa fa-file-pdf-o fa-pdf-color fa-3x"></i>
+        a(href=file.url style="margin-left: 1vw;")= file.name
+      a(href="/admin/social-pedagogue/delete-document?filename="+file.name) Удалить
+
+
+
+
+
+include ./../components/footer
+
+
+script.
+  var input = document.getElementById("search")
+  var items = document.getElementsByClassName("alert-item")
+  input.oninput = function(){
+        for (index = 0; index < items.length; ++index){
+            var item = items[index]
+            if (item.innerHTML.toLowerCase().includes(input.value.toLowerCase())){
+                item.style.display = ""
+            } else {
+                item.style.display = "none"
+            }
+        }
+  }
+
+
+script.
+  var dialog = document.querySelector('dialog');
+  document.querySelector('#show_help').onclick = function() {
+    dialog.show();
+  };
+  document.querySelector('#close_help').onclick = function() {
+    dialog.close();
+  };

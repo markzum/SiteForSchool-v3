@@ -15,19 +15,58 @@ include ./../components/navbar.pug
       <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
       <strong>Успех!</strong> Действие успешно выполнено
   
-  div(style="font-size: 1.5vw;") Главное
-  a(href="/admin/alerts") Объявления
+
+
   <br>
-  a(href="/admin/persons") Персоналии
-  <br>
-  <br>
-  div(style="font-size: 1.5vw;") Дополнительно
-  a(href="/admin/persons-storage") Хранилище фото персон
-  <br>
-  a(href="/admin/documents-storage") Хранилище документов
-  <br>
-  <br>
+  div(style="font-size: 1.3vw;") !{username}
   a(href="/admin/logout") Выйти
+  <br>
+  <br>
+  
+  //main_admin
+  if role == "main_admin"
+    div(style="font-size: 1.5vw;") Главное
+    a(href="/admin/alerts") Объявления
+    <br>
+    a(href="/admin/persons") Персоналии
+    <br>
+    a(href="/admin/social-pedagogue") Персоналии - Социальный педагог
+    <br>
+    <br>
+
+    div(style="font-size: 1.5vw;") Дополнительно
+    a(href="/admin/persons-storage") Хранилище фото персон
+    <br>
+    a(href="/admin/documents-storage") Хранилище документов
+    <br>
+    <br>
+  
+  //alerts_op
+  if role == "alerts_op"
+    div(style="font-size: 1.5vw;") Главное
+    a(href="/admin/alerts") Объявления
+    <br>
+    <br>
+
+  
+  //persons_op
+  if role == "persons_op"
+    div(style="font-size: 1.5vw;") Главное
+    a(href="/admin/persons") Персоналии
+    <br>
+    <br>
+
+    div(style="font-size: 1.5vw;") Дополнительно
+    a(href="/admin/persons-storage") Хранилище фото персон
+    <br>
+    <br>
+  
+  //social_pedagogue_op
+  if role == "social_pedagogue_op"
+    div(style="font-size: 1.5vw;") Главное
+    a(href="/admin/social-pedagogue") Персоналии - Социальный педагог
+    <br>
+    <br>
 
 
 

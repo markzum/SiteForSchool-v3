@@ -1,0 +1,231 @@
+doctype html
+head
+  include ./../components/head.pug
+  title Администрирование - Официальный сайт 163 школы Санкт-Петербурга
+
+
+include ./../components/navbar.pug
+
+
+
+<dialog style="width: 70vw;">
+  h3 СПРАВКА
+  p.
+    Тут ничего нету
+  
+
+  <button id="close_help">Закрыть</button>
+</dialog>
+
+
+
+.place1(style='margin: 6vh 12vw 0vh 12vw; padding: 2vh 2vw 2vh 2vw; min-height: 90vh;')
+  a(href="/admin") !{fa_arrow_left} Назад<br>
+  button(id="show_help" style="margin: 2vh 0 2vh 0;") СПРАВКА
+  div(style="font-size: 1.5vw;") Добавить персоналию
+
+
+  form(action="/admin/persons/edit" method="post" enctype="multipart/form-data")
+
+    input(type="hidden" name="id" required value=person._id) 
+    
+    input(type="text" name="name" required style="width: 20vw; margin: 0.5vw; margin-top: 1vw;" placeholder="Имя" autocomplete="off" value=person.name)
+    <br>
+
+    textarea(rows="10" name="short_description" placeholder="Краткое описание" required style="resize: none; width: 60vw; height: 20vh; margin: 0.5vw;")= person.short_description
+    <br>
+
+    textarea(rows="10" name="description" placeholder="Полное описание" required style="resize: none; width: 60vw; height: 25vh; margin: 0.5vw;")= person.description
+    <br>
+
+    <label for="class">Класс:</label>
+    <select name="class" id="class" required style="margin: 0.5vw;">
+
+      if person.class == "administration"
+        <option value="administration" selected>Администрация</option>
+      else
+        <option value="administration">Администрация</option>
+      
+      if person.class == "teacher"
+        <option value="teacher" selected>Учитель</option>
+      else 
+        <option value="teacher">Учитель</option>
+      
+      if person.class == "teacher"
+        <option value="teacher_odod">Педагог ОДОД</option>
+      else 
+        <option value="teacher_odod">Педагог ОДОД</option>
+      
+    </select><br>
+
+
+    <div class="administration_position_div">
+      <label for="administration_position">Должность:</label>
+      <select name="position" id="administration_position" required style="margin: 0.5vw;">
+        if person.position == "director"
+          <option value="director" selected>Директор</option>
+        else
+          <option value="director">Директор</option>
+
+        if person.position == "ass_director"
+          <option value="ass_director" selected>Заместитель директора</option>
+        else 
+          <option value="ass_director">Заместитель директора</option>
+        
+        if person.position == "manager"
+          <option value="manager" selected>Руководитель структурных подразделений</option>
+        else 
+          <option value="manager">Руководитель структурных подразделений</option>
+        
+      </select>
+    </div>
+
+    <div class="teacher_position_div">
+      <label for="teacher_position">Предмет:</label>
+      <select name="position" id="teacher_position" required style="margin: 0.5vw;">
+
+        if person.position == "primary"
+          <option value="primary" selected>Начальная школа</option>
+        else
+          <option value="primary">Начальная школа</option>
+        
+        if person.position == "rus_and_liter"
+          <option value="rus_and_liter" selected>Русский язык и литература</option>
+        else
+          <option value="rus_and_liter">Русский язык и литература</option>
+        
+        if person.position == "math"
+          <option value="math" selected>Математика</option>
+        else
+          <option value="math">Математика</option>
+
+        if person.position == "physics"
+          <option value="physics" selected>Физика</option>
+        else
+          <option value="physics">Физика</option>
+
+        if person.position == "chemistry"
+          <option value="chemistry" selected>Химия</option>
+        else
+          <option value="chemistry">Химия</option>
+
+        if person.position == "obzh"
+          <option value="obzh" selected>ОБЖ</option>
+        else
+          <option value="obzh">ОБЖ</option>
+
+        if person.position == "it"
+          <option value="it" selected>Информатика и ИКТ</option>
+        else
+          <option value="it">Информатика и ИКТ</option>
+
+        if person.position == "geo_and_bio"
+          <option value="geo_and_bio" selected>География и биология</option>
+        else
+          <option value="geo_and_bio">География и биология</option>
+
+        if person.position == "english"
+          <option value="english" selected>Английский язык</option>
+        else
+          <option value="english">Английский язык</option>
+
+        if person.position == "history_and_social"
+          <option value="history_and_social" selected>История и обществознание</option>
+        else
+          <option value="history_and_social">История и обществознание</option>
+
+        if person.position == "sport"
+          <option value="sport" selected>Физкультура</option>
+        else
+          <option value="sport">Физкультура</option>
+
+        if person.position == "music"
+          <option value="music" selected>Музыка</option>
+        else
+          <option value="music">Музыка</option>
+
+        if person.position == "art"
+          <option value="art" selected>Изобразительное искусство</option>
+        else
+          <option value="art">Изобразительное искусство</option>
+
+        if person.position == "technology"
+          <option value="technology" selected>Технология</option>
+        else
+          <option value="technology">Технология</option>
+
+      </select>
+    </div>
+    
+    <br>
+
+
+    <fieldset style="border: 3px dotted lightgray; padding: 1vw;">
+      <legend>Фото человека</legend>
+      <input type="file" name="photo" style="margin: 0.5vw;" accept="image/*"><br>
+      <label for="photo2">или</label>
+      input(type="text" name="photo2" id="photo2" placeholder="Имя файла" style="width: 30vw;" value=person.img)
+      <br>
+      <br>
+    </fieldset>
+
+    input(type="submit" value="Готово" style="margin: 0.5vw;")
+  a(href="/admin") Отмена
+
+
+
+
+
+include ./../components/footer.pug
+
+script.
+  var input = document.getElementById("search")
+  var items = document.getElementsByClassName("alert-item")
+  input.oninput = function(){
+        for (index = 0; index < items.length; ++index){
+            var item = items[index]
+            if (item.innerHTML.toLowerCase().includes(input.value.toLowerCase())){
+                item.style.display = ""
+            } else {
+                item.style.display = "none"
+            }
+        }
+  }
+
+script.
+  var dialog = document.querySelector('dialog');
+  document.querySelector('#show_help').onclick = function() {
+    dialog.show();
+  };
+  document.querySelector('#close_help').onclick = function() {
+    dialog.close();
+  };
+
+script.
+  document.getElementById("teacher_position").disabled = true
+  $('.teacher_position_div').hide()
+  $(function() {
+    $('#class').change(function () {
+        var vibor = $(this).find(':selected').val();
+
+        if(vibor == 'administration') {
+          document.getElementById("administration_position").disabled = false
+          document.getElementById("teacher_position").disabled = true
+          $('.administration_position_div').show()
+          $('.teacher_position_div').hide()
+
+        } else if(vibor == 'teacher') {
+          document.getElementById("teacher_position").disabled = false
+          document.getElementById("administration_position").disabled = true
+          $('.administration_position_div').hide()
+          $('.teacher_position_div').show()
+
+        } else if(vibor == 'teacher_odod') {
+          document.getElementById("administration_position").disabled = true
+          document.getElementById("teacher_position").disabled = true
+          $('.administration_position_div').hide()
+          $('.teacher_position_div').hide()
+        } 
+    });
+  });
+

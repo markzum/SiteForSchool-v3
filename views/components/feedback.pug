@@ -5,21 +5,21 @@
       Вы можете отправить сообщение или вопрос администрации школы прямо с этого сайта. Если вы хотите получить ответ, пожалуйста, представьтесь и сообщите свой контактный телефон или электронный адрес.
 
     form(action="/feedback" method="post")
-      <input type="text" name="name" placeholder="Имя" required class="feedback-item" style="width: 34.25vw;">
+      <input type="text" name="name" placeholder="Имя" required class="feedback-item feedback-item-width">
 
-      <input type="email" name="email" placeholder="Ваш email" required class="feedback-item" style="width:  34.25vw;"><br>
+      <input type="email" name="email" placeholder="Ваш email" required class="feedback-item feedback-item-width"><br>
 
-      <select name="recipient" required class="feedback-item" style="resize: none; width: 34.25vw;">
-        <option disabled selected>Выберите получателя</option>
+      <select name="recipient" required class="feedback-item feedback-item-width" style="resize: none;">
+        <option disabled>Выберите получателя</option>
         <option value="meshcheryakov">Создатель сайта Мещеряков Марк</option>
         <option value="dementieva">Заведующая музеем Дементьевой А. В.</option>
       </select>
 
-      <input type="text" name="subject" placeholder="Тема письма" required class="feedback-item" style="width: 34.25vw;"><br>
+      <input type="text" name="subject" placeholder="Тема письма" required class="feedback-item feedback-item-width"><br>
 
       <textarea rows="10" name="text" placeholder="Текст сообщения" required class="feedback-item" style="resize: none; width: 70.8vw;"></textarea><br>
       <div align="center">
-        <input type="submit" value="Отправить" style='margin: 1vw;' class="feedback-button">
+        <input type="submit" value="Отправить" class="feedback-button">
       </div>
 
       .feedback-hide-button(onclick="feedbackHide()") !{fa_close_2x}

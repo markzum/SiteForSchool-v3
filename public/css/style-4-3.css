@@ -1,0 +1,22 @@
+@media (device-aspect-ratio: 4/3) {
+    .more-features .more-features-content {
+        right: 3.8vw;
+    }
+    .more-features .more-features-item-img {
+        size: 12vw;
+    }
+    .position-title {
+        width: 23vw;
+        height: 7vh;
+    }
+    .feedback-item-width {
+        width: 34.14vw;
+    }
+    .search-button {
+        width: 4vw;
+        height: 6vh;
+    }
+    .search-input {
+        width: 66.6vw;
+    }
+}

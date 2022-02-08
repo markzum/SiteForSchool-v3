@@ -41,22 +41,34 @@
     
 
     div(style='display: flex; justify-content: right; width: 22vw; margin-top: -1.2vh; align-items: center;')
-      img.more-features.more-features-button(style="height: 5vh;" src=host+'static/img/more-features.png')
+      .more-features
+        img.more-features-button(src=host+'static/img/more-features.png' style="z-index: 5;" onclick="qwe();")
+        .more-features-content 
+          a(href='javascript:feedbackShow()')
+            img.more-features-item-img(title='Напишите нам' src=host+'static/img/feedback.png')
+          a(href='/search')
+            img.more-features-item-img(title='Поиск' src=host+'static/img/search.png')
+          <hr>
+          a(href='javascript:toggleTheme()')
+            img.more-features-item-img(title='Тема' src=host+'static/img/dark-theme.png')
+      //img.more-features.more-features-button()
 
 
 
-.more-features.more-features-div#more-features-div
-  a.more-features(href='javascript:feedbackShow()')
-    img.more-features(style="height: 4vh; padding-left: 1.5vw;" title='Напишите нам' src=host+'static/img/feedback.png')
-  a.more-features(href='/search')
-    img.more-features(style="height: 4vh; padding-left: 1.5vw;" title='Поиск' src=host+'static/img/search.png')
-  <hr>
-  a.more-features(href='javascript:toggleTheme()')
-    img.more-features(style="height: 4vh; padding-left: 1.5vw;" title='Тема' src=host+'static/img/dark-theme.png')
+
+.rickroll-easter-egg#rickroll-easter-egg
+  .place1(style='margin: 5vh 12vw 0vh 12vw; padding: 1vw;')
+    .rickroll-easter-egg-text#rickroll-easter-egg-text.unselectable easter egg
+    .rickroll-easter-egg-hide-button#rickroll-easter-egg-hide-button(onclick="rickrollEasterEggHide()") !{fa_close_2x}
+    a.rickroll-easter-egg-surprise-button#rickroll-easter-egg-surprise-button.unselectable(href='https://www.youtube.com/watch?v=dQw4w9WgXcQ' target="_blank") Сюрприз
+
+
 
 
 
 script(src="http://code.jquery.com/jquery-2.0.2.min.js")
+
+
 
 //more features
 script.
@@ -83,6 +95,57 @@ script.
     document.body.classList.toggle("dark")
     localStorage.theme = document.body.className || "light"
   }
+
+
+//easter egg
+script.
+  var x = 0
+  function qwe(){
+    x = x + 1;
+    $("#rickroll-easter-egg-surprise-button").hide();
+    if (x==5){
+      document.getElementById("rickroll-easter-egg-text").innerHTML="Что ты делаешь?";
+      rickrollEasterEggShow()
+    } else if (x==12){
+      document.getElementById("rickroll-easter-egg-text").innerHTML="Перестань.";
+      rickrollEasterEggShow()
+    } else if (x==20){
+      document.getElementById("rickroll-easter-egg-text").innerHTML="Нет. Хватит!";
+      rickrollEasterEggShow()
+    } else if (x==28){
+      document.getElementById("rickroll-easter-egg-text").innerHTML="Тебе не надоело?";
+      rickrollEasterEggShow()
+    } else if (x==35){
+      document.getElementById("rickroll-easter-egg-text").innerHTML="Пожалей хотя бы мышку!";
+      rickrollEasterEggShow()
+    } else if (x==45){
+      document.getElementById("rickroll-easter-egg-text").innerHTML="Ладно, держи:";
+      rickrollEasterEggShow()
+      $("#rickroll-easter-egg-surprise-button").show();
+    }
+  }
+
+script.
+  $("#rickroll-easter-egg").hide()
+  function rickrollEasterEggShow(){
+      $("#rickroll-easter-egg").show();
+  }
+  function rickrollEasterEggHide(){
+      $("#rickroll-easter-egg").hide();
+  }
+
+
+//making footer stick down
+//script.
+  function stickFooter() {
+    var offsetHeight1 = document.getElementsByClassName('place2')[4].offsetHeight;
+    console.log(offsetHeight1)
+    console.log(document.getElementsByClassName('place2'))
+    document.getElementsByClassName('place2')[5].style.height = offsetHeight1 + "px";
+    console.log(document.getElementsByClassName('place2')[5].offsetHeight)
+  }
+  stickFooter()
+  window.addEventListener('resize', stickFooter);
 
 
 

@@ -51,8 +51,9 @@ body.dark .more-features-button{
 	filter: invert(100%);
 }
 
-body.dark .more-features-div{
+body.dark .more-features-content{
 	background: #333;
+	border: 2px solid #ba65ff;
 }
 
 body.dark .subnavbar{

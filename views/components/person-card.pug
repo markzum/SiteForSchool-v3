@@ -13,5 +13,5 @@ mixin person-card(position_need)
           div(style='font-size: 1.5vw; padding-bottom: 0vh;')
             a.persons-name-a(href='/persons/person-page?id=' + person._id)
               p !{person.name}
-          div(style='font-size: 1.2vw;')
+          .underscore-a-div(style='font-size: 1.2vw;')
             p !{person.short_description}
